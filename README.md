@@ -12,7 +12,7 @@ This proxy is for developers and testers who are developing (or testing) the GUI
 
 Since the API that is serving some of the data, for AJAX calls or simple Form calling either does not exist yet, or might return different results each time, it is easier if you can control the content of some of these responses.
 
-When using Selenium and WebDriver for checking the validity of the GUI, it is best to be able to expect specific values to be displayed. If the server might return different values, the test might be too general ("*Is there a button?*", *"Is there a category list?"*), or might break too often. When fixing the server response, it is possible to test for specific values (*"Are there **5** categories displayed?"*).
+When using Selenium and WebDriver for checking the validity of the GUI, it is best to be able to expect specific values to be displayed. If the server might return different values, the test might be too general ("*Is there a button?*", *"Is there a category list?"*), or might break too often. When fixing the server response, it is possible to test for specific values (*"Are there 5 categories displayed?"*).
 
 It is also possible to modify the server responses and create extreme values (for example, *"No Categories", "Many Categories", "Duplicate Categories", "Long name Categories"*...). This can be done easily as part of the test by modifying the local text file.
 
