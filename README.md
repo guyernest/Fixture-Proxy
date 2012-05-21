@@ -16,6 +16,7 @@ The local files should be:  (var file = '/API/DataAPI/...more path.../...query..
 You can discover the name of the local file by using md5.js utility
 
 > node md5.js "http://stackoverflow.com/questions/4351521/how-to-pass-command-line-arguments-to-node-js"
+
 21 May 15:55:51 - Path is:/questions/4351521/how-to-pass-command-line-arguments-to-node-js
 21 May 15:55:51 - MD5 is:3a0353d6f73de973dd55572bbeb5af62
 
