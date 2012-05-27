@@ -31,9 +31,10 @@ Host : localhost
 port : 3000
 
 In Firefox: Preferences (CMD+,) -> Advanced -> Network -> Connection -> Settings... -> Manual Proxy Configuration
+
 In Chrome: Settings (CMD+,) -> Show Advanced Settings -> Network -> Change Proxy Settings...
 
-You make sure that you installed everything correctlly, you can got [node.js] site, and you will see a gray cicle around the logo which was sevrved from the local proxy.
+You can make sure that you installed everything correctlly, you can go to [node.js] site, and you should see a gray cicle around the logo which was sevrved from the local proxy.
 
 
 How to add Local Fixtures?
