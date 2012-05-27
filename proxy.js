@@ -39,8 +39,10 @@ function ip_allowed(ip) {
 }
 
 function serve_local(query) {
+  msg = "Testing Request " + query.url;
+  sys.log(msg);
   for (i in localFiles) {
-    if (localFiles[i].test(getPath(query))) {
+    if (localFiles[i].test(query.url)) {
       return true;
     }
   }
@@ -68,21 +70,28 @@ http.createServer(function(request, response) {
   }
 
   if (serve_local(request)) {
-  	var path = getPath(request);
-    msg = "Query " + path + " has been served locally by proxy configuration";
+    msg = "Request " + request.url + " has been served locally by proxy configuration";
     sys.log(msg);
-    var hash1 = crypto.createHash('md5').update(path).digest('hex');
-    response.writeHead(200, {
-	  'Content-Type': 'text/plain'
-	});
-    var s = fs.ReadStream(hash1);
-	s.on('data', function(d) {
-	  response.write(d);
-	});
+    var hash1 = crypto.createHash('md5').update(request.url).digest('hex');
+  if (request.url.indexOf('png') >0) {
+     var img = fs.readFileSync(hash1);
+     response.writeHead(200, {'Content-Type': 'image/gif' });
+     response.end(img, 'binary');
+   } else {
+        response.writeHead(200, {
+        'Content-Type': 'text/plain'
+      });
+      var s = fs.ReadStream(hash1);
+      s.on('data', function(d) {
+        response.write(d);
+      });
 
-	s.on('end', function() {
-	  response.end();
-	});
+      s.on('end', function() {
+        response.end();
+      });
+    
+   }
+
     return;
   }
 

@@ -30,27 +30,34 @@ Then configure your browser proxy setting to:
 Host : localhost
 port : 3000
 
+In Firefox: Preferences (CMD+,) -> Advanced -> Network -> Connection -> Settings... -> Manual Proxy Configuration
+In Chrome: Settings (CMD+,) -> Show Advanced Settings -> Network -> Change Proxy Settings...
+
+You make sure that you installed everything correctlly, you can got [node.js] site, and you will see a gray cicle around the logo which was sevrved from the local proxy.
+
 
 How to add Local Fixtures?
 --------------------------
 
 
-The local files should not include the domain:  (var file = '/API/DataAPI/...more path.../...query...')
+The local files should include the full URL address:  (var file = 'http://www.domain.com/API/DataAPI/...more path.../...&query=value&...')
 
 - update each local URL path in the ./localFiles list 
 
 ```
-  > echo "/questions/4351521/how-to-pass-command-line-arguments-to-node-js" >> ./localFiles
+  > echo "http://nodejs.org/images/logo.png" >> ./localFiles
 ```
+
+You should use the local proxy mainly for text files (JSON responses), but it should work for image files as well.
 
 - update its content into their MD5 files 
 
 You can discover the name of the local file by using md5.js utility
 
 ```
-  > node md5.js "http://stackoverflow.com/questions/4351521/how-to-pass-command-line-arguments-to-node-js"
-21 May 15:55:51 - Path is:/questions/4351521/how-to-pass-command-line-arguments-to-node-js
-21 May 15:55:51 - MD5 is:3a0353d6f73de973dd55572bbeb5af62
+  > node md5.js "http://nodejs.org/images/logo.png"
+27 May 15:47:55 - url is:http://nodejs.org/images/logo.png
+27 May 15:47:55 - MD5 is:66b7938bb7d32e555eafea6a1f1ad533
 ```
 
-[node.js]: http://http://nodejs.org//
+[node.js]: http://nodejs.org//
